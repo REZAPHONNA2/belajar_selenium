@@ -11,5 +11,6 @@ time.sleep(2)
 """Menambahkan fungsi button click ke new tab"""
 driver.find_element("link text", "Click Here").click()
 time.sleep(2)
+"""fungsi tambah new tab 0=1"""
 driver.switch_to_window(driver.window_handles[0])
 
