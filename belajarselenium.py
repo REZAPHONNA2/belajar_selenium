@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
 import time
+from selenium.webdriver.common.action_chains import ActionChains
 
 """ (COMMENT) 
 options = webdriver.ChromeOptions()
@@ -89,3 +90,21 @@ except TimeoutException:
     pass    
 time.sleep(3)
 """
+
+"""COMMENT (MENAMBAH FITUR MOUSE HOVER UNTUK MUNCUL DROPDOWN)
+options = webdriver.ChromeOptions()
+options.add_experimental_option('detach',True)
+driver = webdriver.Chrome(options=options)
+
+driver.get("https://demoqa.com/menu")
+driver.maximize_window()
+driver.implicitly_wait(10)
+
+# CARA 1
+# menu = driver.find_element(By.LINK_TEXT, "Main Item 2")
+# Hover = ActionChains(driver).move_to_element(menu)
+# Hover.perform()
+# CARA 2
+ActionChains(driver).move_to_element((driver.find_element(By.LINK_TEXT, 'Main Item 2'))).perform()
+"""
+
