@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
-#import time
+import time
 
 """ (COMMENT) 
 options = webdriver.ChromeOptions()
@@ -70,3 +70,22 @@ except TimeoutException:
     pass
 """
 
+""" COMMENT (Fitur Handling pop up / Modal /Iklan)
+options = webdriver.ChromeOptions()
+options.add_experimental_option('detach',True)
+driver = webdriver.Chrome(options=options)
+#driver.maximize_window()
+for i in range(2): # UNTUK PROSES LOOP WEB BROWSER 
+    driver.get("https://tees.co.id/")
+
+try:
+    WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]')))
+    print("Pop Up Muncul")
+    driver.find_element(By.CLASS_NAME, "btn-modal-close").click()
+    print("Pop Up di CLose")
+
+except TimeoutException:
+    print("Pop up tidak Muncul")
+    pass    
+time.sleep(3)
+"""
