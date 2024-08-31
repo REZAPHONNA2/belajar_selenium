@@ -1,6 +1,10 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-import time
+
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import TimeoutException
+#import time
 
 """ (COMMENT) 
 options = webdriver.ChromeOptions()
@@ -33,7 +37,7 @@ time.sleep(2)
 #Apabila ingin batal/cancel pop pakai "dismiss"
 driver.switch_to.alert.accept()"""
 
-"""(COMMENT) Implicitly_wait"""
+"""COMMENT (Implicitly_wait)
 options = webdriver.ChromeOptions()
 options.add_experimental_option('detach',True)
 #Menggunakan Charles Proxy untuk setting kecepatan internet
@@ -44,3 +48,25 @@ driver.implicitly_wait(10)
 driver.get("https://demoqa.com/login")
 driver.get("https://demoqa.com/books")
 driver.find_element(By.ID, "login").click()
+"""
+
+"""COMMENT (Explicitly wait)
+options = webdriver.ChromeOptions()
+options.add_experimental_option('detach',True)
+driver = webdriver.Chrome(options=options)
+driver.maximize_window()
+# driver = webdriver.Chrome()
+
+driver.get('https://demoqa.com/alerts')
+driver.find_element(By.ID, "timerAlertButton").click()
+
+try:
+    WebDriverWait(driver,10).until(EC.alert_is_present())
+    driver.switch_to.alert.accept()
+    print("alert di pencet")
+
+except TimeoutException:
+    print("Alert tidak muncul")
+    pass
+"""
+
