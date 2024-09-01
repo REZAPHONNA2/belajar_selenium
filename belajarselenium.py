@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
+from selenium .webdriver.common.keys import Keys
 import time
 from selenium.webdriver.common.action_chains import ActionChains
 
@@ -108,3 +109,25 @@ driver.implicitly_wait(10)
 ActionChains(driver).move_to_element((driver.find_element(By.LINK_TEXT, 'Main Item 2'))).perform()
 """
 
+"""COMMENT (FITUR UPLOAD FILE)
+options = webdriver.ChromeOptions()
+options.add_experimental_option('detach',True)
+driver = webdriver.Chrome(options=options)
+driver.maximize_window()
+driver.implicitly_wait(10)
+# Alamat 1
+# driver.get("https://demoqa.com/upload-download/")
+
+# driver.find_element(By.ID, "uploadFile").send_keys("C:/Users/rezaphonna/Downloads/Tutorial Macbook untuk Printer ApeosPort-V C4476.pdf")
+
+# Alamat 2 
+driver.get("https://gofile.io/uploadFiles")
+time.sleep(2)
+
+file_input = driver.find_element(By. ID, "filesUpload").click()
+
+file_input.send_keys(r"C:/Users/rezaphonna/Downloads/GUIDE REMEDIASI.txt")
+
+time.sleep(5)
+driver.quit()
+"""
