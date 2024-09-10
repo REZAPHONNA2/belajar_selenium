@@ -131,3 +131,20 @@ file_input.send_keys(r"C:/Users/rezaphonna/Downloads/GUIDE REMEDIASI.txt")
 time.sleep(5)
 driver.quit()
 """
+
+""" COMMENT ( MENAMBAHKAN FITUR DRAG & DROP )
+options = webdriver.ChromeOptions()
+options.add_experimental_option('detach',True)
+driver = webdriver.Chrome(options=options)
+
+driver.get("https://demoqa.com/droppable/")
+driver.maximize_window()
+driver.implicitly_wait(20)
+
+elemen = driver.find_element(By.ID, "draggable")
+kotak = driver.find_element(By.ID, "droppable")
+
+action = ActionChains(driver)
+
+action.drag_and_drop(elemen, kotak).perform()
+"""
