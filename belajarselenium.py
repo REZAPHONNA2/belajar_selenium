@@ -7,6 +7,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium .webdriver.common.keys import Keys
 import time
 from selenium.webdriver.common.action_chains import ActionChains
+import pyautogui
 
 """ (COMMENT) 
 options = webdriver.ChromeOptions()
@@ -147,4 +148,28 @@ kotak = driver.find_element(By.ID, "droppable")
 action = ActionChains(driver)
 
 action.drag_and_drop(elemen, kotak).perform()
+"""
+
+""" COMMENT (DATE PICKER TRIK & SOLUSI)
+options = webdriver.ChromeOptions()
+options.add_experimental_option('detach',True)
+driver = webdriver.Chrome(options=options)
+driver.implicitly_wait(10)
+driver.maximize_window()                      
+
+Cara 1
+driver.get("https://jqueryui.com/datepicker/")
+driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="content"]/iframe'))
+# driver.find_element(By.ID, "datepicker").click()
+# driver.find_element(By.XPATH, '//*[@id="ui-datepicker-div"]/table/tbody/tr[3]/td[2]/a').click()
+driver.find_element(By.ID, "datepicker").send_keys('09/01/2024')
+time.sleep(3)
+driver.find_element(By.ID, "datepicker").clear()
+
+Cara 2
+driver.get("https://demoqa.com/date-picker/")
+driver.find_element(By.ID, "datePickerMonthYearInput").click()
+pyautogui.press('backspace',presses=10)
+time.sleep(3)
+driver.find_element(By.ID, "datePickerMonthYearInput").send_keys('09/01/2024')
 """
