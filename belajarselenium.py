@@ -8,6 +8,7 @@ from selenium .webdriver.common.keys import Keys
 import time
 from selenium.webdriver.common.action_chains import ActionChains
 import pyautogui
+from selenium.webdriver.support.ui import Select
 
 """ (COMMENT) 
 options = webdriver.ChromeOptions()
@@ -172,4 +173,24 @@ driver.find_element(By.ID, "datePickerMonthYearInput").click()
 pyautogui.press('backspace',presses=10)
 time.sleep(3)
 driver.find_element(By.ID, "datePickerMonthYearInput").send_keys('09/01/2024')
+"""
+
+""" COMMENT (MENABAHKAN FITUR SELECTION BOX FIELD)
+options = webdriver.ChromeOptions()
+options.add_experimental_option('detach',True)
+driver = webdriver.Chrome(options=options)
+driver.maximize_window()
+driver.implicitly_wait(10)
+driver.get("https://demoqa.com/select-menu/")
+
+# OLD STYLE SELECTION (TRIK LAMA)
+pilih = Select(driver.find_element(By.ID, "oldSelectMenu"))
+
+pilih.select_by_visible_text('Yellow')
+pilih.select_by_value('10')
+
+# SELECT ONE WITH TYPING
+driver.find_element(By.ID, "selectOne").click()
+pyautogui.typewrite("Prof.")
+pyautogui.press('enter')
 """
