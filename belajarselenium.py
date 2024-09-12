@@ -194,3 +194,12 @@ driver.find_element(By.ID, "selectOne").click()
 pyautogui.typewrite("Prof.")
 pyautogui.press('enter')
 """
+
+""" COMMENT (MENAMBAHKAN FITUR MODE HEADLESS)
+options = webdriver.ChromeOptions()
+options.headles = True
+
+driver = webdriver.Chrome(options=options)
+driver.get("https://demoqa.com/")
+print(driver.title)
+"""
