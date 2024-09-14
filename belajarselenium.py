@@ -195,11 +195,15 @@ pyautogui.typewrite("Prof.")
 pyautogui.press('enter')
 """
 
-""" COMMENT (MENAMBAHKAN FITUR MODE HEADLESS)
+""" OMMENT (MENAMBAHKAN FITUR MODE HEADLESS)
+# COMMENT (MENAMBAHKAN FITUR SCREENSHOOT )
 options = webdriver.ChromeOptions()
+options.add_experimental_option('excludeSwitches', ['enable-logging'])
 options.headles = True
+options.add_argument("--window-size=1920,1080")
 
 driver = webdriver.Chrome(options=options)
 driver.get("https://demoqa.com/")
 print(driver.title)
+driver.get_screenshot_as_file("screenshoot_2.png")
 """
