@@ -10,6 +10,9 @@ from selenium.webdriver.common.action_chains import ActionChains
 import pyautogui
 from selenium.webdriver.support.ui import Select
 
+
+
+
 """ (COMMENT) 
 options = webdriver.ChromeOptions()
 options.add_experimental_option('detach',True)
@@ -195,7 +198,7 @@ pyautogui.typewrite("Prof.")
 pyautogui.press('enter')
 """
 
-""" OMMENT (MENAMBAHKAN FITUR MODE HEADLESS)
+""" COMMENT (MENAMBAHKAN FITUR MODE HEADLESS)
 # COMMENT (MENAMBAHKAN FITUR SCREENSHOOT )
 options = webdriver.ChromeOptions()
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
@@ -207,3 +210,23 @@ driver.get("https://demoqa.com/")
 print(driver.title)
 driver.get_screenshot_as_file("screenshoot_2.png")
 """
+""" COMMENT (MENAMBAH FUNGSI SELEKSI FRAME)"""
+options = webdriver.ChromeOptions()
+options.add_experimental_option('detach',True)
+driver = webdriver.Chrome(options=options)
+driver.maximize_window()
+driver.implicitly_wait(10)
+
+
+driver.get("https://the-internet.herokuapp.com/nested_frames")
+
+driver.switch_to.frame('frame-top')
+driver.switch_to.frame('frame-left')
+Text1 = driver.find_element(By.XPATH, '/html/body').text
+print(Text1)
+
+driver.switch_to.parent_frame()
+driver.switch_to.frame('frame-middle')
+Text2 = driver.find_element(By.XPATH, '//*[@id="content"]').text
+print(Text2)
+
